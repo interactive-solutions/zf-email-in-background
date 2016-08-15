@@ -1,0 +1,16 @@
+{
+  "name": "interactive-solutions/zf-email-in-background",
+  "homepage": "https://github.com/interactives-solutions/zf-email-in-background",
+  "license": "MIT",
+  "require": {
+    "interactive-solutions/zf-bernard": "^1.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "InteractiveSolutions\\EmailInBackground\\": "src/"
+    },
+    "classmap": [
+      "./Module.php"
+    ]
+  }
+}
