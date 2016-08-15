@@ -2,7 +2,7 @@ InteractiveSolutions\EmailInBackground
 ======================================
 
 This is a integration module between `RoaveEmailTemplates` and `InteractiveSolutions\ZfBernard`
-and it allow a very simple method of sending emails in the background.
+and it allows a very simple method of sending emails in the background.
 
 
 # Installation
@@ -29,7 +29,7 @@ $args = [
 $producer->producer(new SendEmailMessage('email@google.com', 'user:registration', $args));
 ```
 
-And voila, you have producer a new message that will send an email in a background task
+And voila, you have produced a new message that will send an email in a background task
 
 # Running the code in development
 
