@@ -8,8 +8,8 @@ declare(strict_types = 1);
 
 namespace InteractiveSolutions\EmailInBackground;
 
-use Exception;
 use Roave\EmailTemplates\Service\EmailServiceInterface;
+use Throwable;
 use Zend\Console\ColorInterface;
 use Zend\Console\Console;
 
@@ -35,15 +35,18 @@ final class SendEmail
         $console->write('Sending email to ', ColorInterface::GREEN);
         $console->write($message->getEmail(), ColorInterface::YELLOW);
         $console->write(' with template ', ColorInterface::GREEN);
-        $console->writeLine($message->getTemplate(), ColorInterface::YELLOW);
+        $console->write($message->getTemplate(), ColorInterface::YELLOW);
 
         try {
             $this->emailService->send($message->getEmail(), $message->getTemplate(), $message->getPayload());
 
-            $console->writeLine('Successfully sent email', ColorInterface::GREEN);
+            $console->writeLine(' success', ColorInterface::GREEN);
 
-        } catch (Exception $e) {
-            $console->writeLine(sprintf('Failed to send email with error %s', $e->getMessage()), ColorInterface::RED);
+        } catch (Throwable $e) {
+
+            $console->writeLine(' failed', ColorInterface::RED);
+            $console->writeLine($e->getMessage());
+            $console->writeLine($e->getTraceAsString());
 
             // Re-throw it to let bernard handle the exception
             throw $e;
