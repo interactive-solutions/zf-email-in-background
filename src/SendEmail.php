@@ -38,7 +38,12 @@ final class SendEmail
         $console->write($message->getTemplate(), ColorInterface::YELLOW);
 
         try {
-            $this->emailService->send($message->getEmail(), $message->getTemplate(), $message->getPayload());
+            $this->emailService->send(
+                $message->getEmail(),
+                $message->getTemplate(),
+                $message->getPayload(),
+                $message->getLocale()
+            );
 
             $console->writeLine(' success', ColorInterface::GREEN);
 
