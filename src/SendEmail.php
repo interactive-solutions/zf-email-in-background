@@ -36,9 +36,16 @@ final class SendEmail
         $console->write($message->getEmail(), ColorInterface::YELLOW);
         $console->write(' with template ', ColorInterface::GREEN);
         $console->write($message->getTemplate(), ColorInterface::YELLOW);
+        $console->write(' with locale ', ColorInterface::GREEN);
+        $console->write($message->getLocale() ?? 'not specified', ColorInterface::YELLOW);
 
         try {
-            $this->emailService->send($message->getEmail(), $message->getTemplate(), $message->getPayload());
+            $this->emailService->send(
+                $message->getEmail(),
+                $message->getTemplate(),
+                $message->getPayload(),
+                $message->getLocale()
+            );
 
             $console->writeLine(' success', ColorInterface::GREEN);
 
