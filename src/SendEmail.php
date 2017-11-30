@@ -8,6 +8,7 @@ declare(strict_types = 1);
 
 namespace InteractiveSolutions\EmailInBackground;
 
+use DateTime;
 use Roave\EmailTemplates\Service\EmailServiceInterface;
 use Throwable;
 use Zend\Console\ColorInterface;
@@ -32,6 +33,7 @@ final class SendEmail
     public function __invoke(SendEmailMessage $message)
     {
         $console = Console::getInstance();
+        $console->write(sprintf('[%s] ', date(DateTime::RFC3339)));
         $console->write('Sending email to ', ColorInterface::GREEN);
         $console->write($message->getEmail(), ColorInterface::YELLOW);
         $console->write(' with template ', ColorInterface::GREEN);
