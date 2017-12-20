@@ -3,7 +3,7 @@
   "homepage": "https://github.com/interactives-solutions/zf-email-in-background",
   "license": "MIT",
   "require": {
-    "interactive-solutions/zf-bernard": "^1.0.0"
+    "interactive-solutions/zf-bernard": "^1.3.0"
   },
   "autoload": {
     "psr-4": {
