@@ -41,18 +41,28 @@ final class SendEmailMessage extends AbstractExplicitMessage
     private $locale;
 
     /**
-     * SendNewPasswordEmailMessage constructor.
-     * @param string $email
-     * @param string $template
-     * @param array $payload
-     * @param string|null $locale
+     * @Serializer\Type("string")
+     *
+     * @var string
      */
-    public function __construct(string $email, string $template, array $payload, string $locale = null)
+    private $replyTo;
+
+    /**
+     * SendNewPasswordEmailMessage constructor.
+     *
+     * @param string      $email
+     * @param string      $template
+     * @param array       $payload
+     * @param string      $locale
+     * @param string|null $replyTo
+     */
+    public function __construct(string $email, string $template, array $payload, string $locale = null, string $replyTo = null)
     {
         $this->email    = $email;
         $this->template = $template;
         $this->payload  = $payload;
         $this->locale   = $locale;
+        $this->replyTo  = $replyTo;
     }
 
     /**
@@ -88,11 +98,19 @@ final class SendEmailMessage extends AbstractExplicitMessage
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getLocale()
     {
         return $this->locale;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getReplyTo()
+    {
+        return $this->replyTo;
     }
 
     public function getQueue(): string
