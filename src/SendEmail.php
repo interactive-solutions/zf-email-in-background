@@ -46,7 +46,8 @@ final class SendEmail
                 $message->getEmail(),
                 $message->getTemplate(),
                 $message->getPayload(),
-                $message->getLocale()
+                $message->getLocale(),
+                $message->getReplyTo()
             );
 
             $console->writeLine(' success', ColorInterface::GREEN);
